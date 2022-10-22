@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home MailBox</title>
+</head>
+<body>
+<h1>Welcome MailBox !</h1>
+<form action="/addMailBox" method="post" th:object="${mailbox}">
+    <table style="border: 1px solid black">
+        <tr>
+            <td>Languages</td>
+            <td>
+                <select name="language">
+                    <option th:each="lang: ${listLanguages}" th:value="${lang}" th:text="${lang}">
+                    </option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Page Size</td>
+            <td><span>Show</span>&ensp;
+                <select name="size">
+                    <option th:each="sz: ${listSize}" th:value="${sz}" th:text="${sz}">
+                    </option>
+                </select>&ensp; <span>emails per page</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Spams Filter</td>
+            <td>
+                <input type="checkbox" name="filter" value="Enable spams filter">&ensp;<span>Enable spams filter</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Signature</td>
+            <td>
+                <textarea name="signature"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td><input style="margin-left: 20px; background: dodgerblue; color: white" type="submit" value="Save"></td>
+            <td><input type="submit" value="Update"></td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>
